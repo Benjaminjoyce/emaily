@@ -22,7 +22,11 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/landingPage')(app);
 
+<<<<<<< HEAD
 const PORT = process.env.PORT || 5000;
+=======
+const PORT = process.env.PORT || 5000
+>>>>>>> a0f247bb54738a5d0df678167a3c1c2d462b077e
 app.listen(PORT);
 
 

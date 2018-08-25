@@ -10,33 +10,30 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
     User.findById(id)
-    .then(user => {
-        done(null, user);
-    })
+        .then(user => {
+            done(null, user);
+        })
 });
 
 passport.use(
-    new GoogleStrategy(
-        {
-        clientID: keys.googleClientID,
-        clientSecret: keys.googleClientSecret,
-        callbackURL: '/auth/google/callback'
+    new GoogleStrategy({
+            clientID: keys.googleClientID,
+            clientSecret: keys.googleClientSecret,
+            callbackURL: '/auth/google/callback',
+            proxy: true
         },
         (accessToken, refreshToken, profile, done) => {
-            User.findOne({ googleId:profile.id })
-            .then((existingUser) => {
-                if (existingUser){
-                    console.log(profile);
-                    done(null, existingUser);
-                    //done(null*no error found* exisiting user)
-                } else {
-                    new User({ googleId:profile.id })
-                    .save()
-                    .then(user => done (null, user));
-                }
-            })
+            User.findOne({ googleId: profile.id })
+                .then((existingUser) => {
+                    if (existingUser) {
+                        done(null, existingUser);
+                        //done(null*no error found* exisiting user)
+                    } else {
+                        new User({ googleId: profile.id })
+                            .save()
+                            .then(user => done(null, user));
+                    }
+                })
         }
     )
 );
-
-
