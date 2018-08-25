@@ -3,22 +3,14 @@
     "version": "0.1.0",
     "private": true,
     "proxy": {
-<<<<<<< HEAD
-        "/auth/google/": {
-=======
         "/auth/google": {
->>>>>>> a0f247bb54738a5d0df678167a3c1c2d462b077e
             "target": "http://localhost:5000"
         }
     },
     "dependencies": {
         "react": "^16.4.2",
         "react-dom": "^16.4.2",
-<<<<<<< HEAD
         "react-scripts": "1.1.5"
-=======
-        "react-scripts": "1.1.4"
->>>>>>> a0f247bb54738a5d0df678167a3c1c2d462b077e
     },
     "scripts": {
         "start": "react-scripts start",
